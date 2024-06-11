@@ -8,17 +8,15 @@ const createOrder = async (productId) => {
         throw new Error('Product not found');
     }
 
-    const orderNumber = Math.floor(1000 + Math.random() * 9000).toString();
-
     const newOrder = new Order({
         product: productId,
-        orderNumber,
+        code
     });
 
     const order = await newOrder.save();
 
     // Enviar correo electrónico
-    await mailService.sendOrderConfirmation(order);
+    //await mailService.sendOrderConfirmation(order);
 
     return order;
 };
