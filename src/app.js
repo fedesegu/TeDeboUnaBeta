@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const bodyParser = require('body-parser');
 const productRoutes = require('./routes/product.router.js');
 const orderRoutes = require('./routes/order.router.js');
 
@@ -8,6 +9,9 @@ dotenv.config();
 
 const app = express();
 app.use(express.json());
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,

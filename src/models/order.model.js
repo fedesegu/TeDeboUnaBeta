@@ -1,13 +1,27 @@
 const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
-    productId: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true },
+    product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true },
     //userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-    //paymentStatus: false,
+    paymentStatus: {
+        type: Boolean,
+        required: true,
+        default: false
+        },
     //whatsappNumber: String
-    code : {
+    productName: {
+        type: String,
+        required: true
+    },
+    productPrice: {
+        type: Number,
+        required: true
+    },
+    
+    
+    
+code : {
         type : String,
-        unique: true,
         required: true,
         default: function() {
             return Math.floor(1000 + Math.random() * 9000).toString();

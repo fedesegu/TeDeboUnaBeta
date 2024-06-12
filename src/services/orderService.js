@@ -10,7 +10,8 @@ const createOrder = async (productId) => {
 
     const newOrder = new Order({
         product: productId,
-        code
+        productName: product.name,
+        productPrice:product.price,
     });
 
     const order = await newOrder.save();
